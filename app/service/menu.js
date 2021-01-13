@@ -7,11 +7,6 @@ class MenuService extends Service {
   constructor(ctx) {
     super(ctx); // 调用父对象上的函数。
   }
-
-  /**
-   * 根据Id获取表信息。
-   * @param {*} id 
-   */
   async index() {
     const result = await this.ctx.model.TbMenu.findAll();
     return result;

@@ -7,20 +7,10 @@ class RegisterService extends Service {
   constructor(ctx) {
     super(ctx); // 调用父对象上的函数。
   }
-  /**
-   * 注册信息
-   * 
-   */
   async create() {
     const { ctx } = this
     const { userid, userpwd, username } = ctx.request.body
-    let user
-    try {
-      user = await ctx.model.TbUser.create({ userid, userpwd, username });
-    } catch (error) {
-      ctx.status = 400;
-    }
-    ctx.status = 201;
+    const user = await ctx.model.TbUser.create({ userid, userpwd, username });
     return user;
   }
 }

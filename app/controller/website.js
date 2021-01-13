@@ -3,9 +3,9 @@
 const Controller = require('egg').Controller;
 
 class WebsiteController extends Controller {
-  async getWebsite() {
+  async index() {
     const { ctx, service } = this;
-    ctx.body  = await service.website.selectWebsite(); // 查找 service/menu.js 下的 selectMenu 方法。
+    ctx.body  = await service.website.index(); // 查找 service/menu.js 下的 selectMenu 方法。
   }
 }
 

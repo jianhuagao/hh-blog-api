@@ -1,7 +1,5 @@
 /* eslint valid-jsdoc: "off" */
-
 'use strict';
-
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -12,6 +10,10 @@ module.exports = appInfo => {
    * @type {Egg.EggAppConfig}
    **/
   const config = exports = {};
+
+  const userConfig = {
+    // myAppName: 'egg',
+  };
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1610354339121_7437';
@@ -34,18 +36,18 @@ module.exports = appInfo => {
       deletedAt: 'del',
     }
   };
-  // config.security = {
-  //   csrf : {
-  //     enable: false,
-  //   }
-  // };
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
+
+  //注册接口不验证csrf
+  config.security = {
+    csrf: {
+      ignore: ['/api/v1/register','/api/v1/login'],
+      enable: true,
+    },
   };
 
   config.jwt = {
-    secret: '密钥',
+    publicSecret: 'publicSecret',
+    privateSecret: 'privateSecret',
   };
 
   config.middleware = [

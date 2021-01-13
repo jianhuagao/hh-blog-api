@@ -12,7 +12,7 @@ class MenuService extends Service {
    * 根据Id获取表信息。
    * @param {*} id 
    */
-  async selectMenu() {
+  async index() {
     const result = await this.ctx.model.TbMenu.findAll();
     return result;
   }

@@ -3,22 +3,30 @@
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
-  const Model = app.model.define('tb_menu', {
+  const Model = app.model.define('tb_user', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true, autoIncrement: true
     },
-    name: {
+    username: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    userid: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    userpwd: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    usertel: {
       type: DataTypes.STRING(20),
       allowNull: true
     },
-    url: {
-      type: DataTypes.STRING(225),
-      allowNull: true
-    },
-    icon: {
-      type: DataTypes.STRING(30),
+    role: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     cdate: {
@@ -31,22 +39,18 @@ module.exports = app => {
       allowNull: true,
       defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
     },
-    sort: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
     del: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '0'
     },
     status: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '1'
     }
   }, {
-    tableName: 'tb_menu'
+    tableName: 'tb_user'
   });
 
   Model.associate = function() {

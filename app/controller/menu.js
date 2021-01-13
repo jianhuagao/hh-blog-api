@@ -3,15 +3,9 @@
 const Controller = require('egg').Controller;
 
 class MenuController extends Controller {
-  async getMenu() {
+  async index() {
     const { ctx, service } = this;
-    ctx.body  = await service.menu.selectMenu(); // 查找 service/menu.js 下的 selectMenu 方法。
-  }
-  
-  async addMenu(){
-    const { ctx, service } = this;
-    console.log(ctx.request.body);
-    ctx.body  = "OK"; 
+    ctx.body  = await service.menu.index(); // 查找 service/menu.js 下的 selectMenu 方法。
   }
 }
 

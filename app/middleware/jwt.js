@@ -12,7 +12,7 @@ module.exports = options => {
       await next();
     // 当前token值不存在的时候
     } else if (!token) {
-      if (ctx.path === '/api/v1/register' || ctx.path === '/api/v1/login/account') {
+      if (ctx.path === '/api/v1/register' || ctx.path === '/api/v1/login') {
         await next();
       } else {
         ctx.throw(401, '未登录， 请先登录');
@@ -21,7 +21,7 @@ module.exports = options => {
       let decode;
       try {
         // 验证当前token
-        decode = JWT.verify(token, options.secret);
+        decode = JWT.verify(token, options.publicSecret);
         if (!decode || !decode.userName) {
           ctx.throw(401, '没有权限，请登录');
         }

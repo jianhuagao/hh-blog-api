@@ -2,7 +2,7 @@
 
 module.exports = app => {
   const DataTypes = app.Sequelize;
-  const sequelize = app.Sequelize;
+
   const Model = app.model.define('tb_reply', {
     id: {
       type: DataTypes.INTEGER,
@@ -36,12 +36,12 @@ module.exports = app => {
     cdate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
     },
     udate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
     },
     sort: {
       type: DataTypes.INTEGER,

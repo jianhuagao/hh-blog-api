@@ -19,10 +19,10 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = ['jwt', 'errorHandler'];
+  config.middleware = [ 'jwt', 'errorHandler' ];
   config.errorHandler = {
     match: '/api',
-  }
+  };
   config.sequelize = {
     dialect: 'mysql',
     host: '121.4.115.182',
@@ -36,13 +36,13 @@ module.exports = appInfo => {
       createdAt: 'cdate',
       updatedAt: 'udate',
       deletedAt: 'del',
-    }
+    },
   };
 
-  //注册接口不验证csrf
+  // 注册接口不验证csrf
   config.security = {
     csrf: {
-      ignore: ['/api/v1/register', '/api/v1/login'],
+      ignore: [ '/api/v1/register', '/api/v1/login' ],
       enable: true,
     },
   };

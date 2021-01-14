@@ -1,5 +1,5 @@
 /* indent size: 2 */
-
+'use strict';
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
@@ -7,83 +7,83 @@ module.exports = app => {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
     },
     logo_img: {
       type: DataTypes.STRING(225),
-      allowNull: false
+      allowNull: false,
     },
     page_url: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     introduction: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: true,
     },
     api_url: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     website: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     inventor: {
       type: DataTypes.STRING(50),
-      allowNull: true
+      allowNull: true,
     },
     protocol: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     version: {
       type: DataTypes.STRING(30),
-      allowNull: true
+      allowNull: true,
     },
     download: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     system: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     cdate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     udate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     sort: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     del: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     status: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: '1'
-    }
+      defaultValue: '1',
+    },
   }, {
-    tableName: 'tb_blog_type'
+    tableName: 'tb_blog_type',
   });
 
   Model.associate = function() {
 
-  }
+  };
 
   return Model;
 };

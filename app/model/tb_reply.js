@@ -1,5 +1,5 @@
 /* indent size: 2 */
-
+'use strict';
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
@@ -7,67 +7,67 @@ module.exports = app => {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     blog_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     replay_parent: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     content: {
       type: DataTypes.STRING(4000),
-      allowNull: false
+      allowNull: false,
     },
     ip: {
       type: DataTypes.STRING(20),
-      allowNull: true
+      allowNull: true,
     },
     name: {
       type: DataTypes.STRING(30),
-      allowNull: true
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING(80),
-      allowNull: true
+      allowNull: true,
     },
     cdate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     udate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     sort: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     del: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     del_reason: {
       type: DataTypes.STRING(4000),
-      allowNull: true
+      allowNull: true,
     },
     status: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: '1'
-    }
+      defaultValue: '1',
+    },
   }, {
-    tableName: 'tb_reply'
+    tableName: 'tb_reply',
   });
 
   Model.associate = function() {
 
-  }
+  };
 
   return Model;
 };

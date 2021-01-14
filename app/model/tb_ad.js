@@ -1,5 +1,5 @@
 /* indent size: 2 */
-
+'use strict';
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
@@ -7,75 +7,75 @@ module.exports = app => {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     url: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     img_url: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     remark: {
       type: DataTypes.STRING(225),
-      allowNull: true
+      allowNull: true,
     },
     type: {
       type: DataTypes.STRING(4000),
-      allowNull: true
+      allowNull: true,
     },
     location: {
       type: DataTypes.STRING(4000),
-      allowNull: true
+      allowNull: true,
     },
     start_date: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
     },
     end_date: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
     },
     weight: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     cdate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     udate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     sort: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     del: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     status: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: '1'
-    }
+      defaultValue: '1',
+    },
   }, {
-    tableName: 'tb_ad'
+    tableName: 'tb_ad',
   });
 
   Model.associate = function() {
 
-  }
+  };
 
   return Model;
 };

@@ -1,5 +1,5 @@
 /* indent size: 2 */
-
+'use strict';
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
@@ -7,55 +7,55 @@ module.exports = app => {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true, autoIncrement: true
+      primaryKey: true, autoIncrement: true,
     },
     username: {
       type: DataTypes.STRING(30),
-      allowNull: false
+      allowNull: false,
     },
     userid: {
       type: DataTypes.STRING(20),
-      allowNull: false
+      allowNull: false,
     },
     userpwd: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: false,
     },
     usertel: {
       type: DataTypes.STRING(20),
-      allowNull: true
+      allowNull: true,
     },
     role: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     cdate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     udate: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
     },
     del: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     status: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: '1'
-    }
+      defaultValue: '1',
+    },
   }, {
-    tableName: 'tb_user'
+    tableName: 'tb_user',
   });
 
   Model.associate = function() {
 
-  }
+  };
 
   return Model;
 };

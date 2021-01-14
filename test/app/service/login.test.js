@@ -10,20 +10,25 @@ describe('test/app/service/login.test.js', () => {
     ctx = app.mockContext();
   });
 
-  it('should login failed ', async () => {
-    app.mockHttpclient(`${ctx.service.login.login}/login`, 'POST', '0');
-    const ret = await ctx.service.login.login({
-      userid: 'test',
-      userpwd: '123',
+  describe('login user', () => {
+
+    it('测试密码错误时登录 should login failed ', async () => {
+      ctx.request.body = {
+        userid: 'gaojianhua',
+        userpwd: '123',
+      };
+      const ret = await ctx.service.login.login();
+      assert(ret === '0');
     });
-    assert(ret === '0');
-  });
-  it('should login success', async function() {
-    app.mockHttpclient(`${ctx.service.login.login}/login`, 'POST', '1');
-    const id = await ctx.service.login.login({
-      userid: 'gaojianhua',
-      userpwd: '123456',
+
+    it('测试密码正确时登录 should login success', async () => {
+      await app.factory.createMany('TbUser', 1);
+      ctx.request.body = {
+        userid: 'gaojianhua',
+        userpwd: '123456',
+      };
+      const id = await ctx.service.login.login();
+      assert(id === '1');
     });
-    assert(id === '1');
   });
 });

@@ -7,14 +7,14 @@ const { app } = require('egg-mock/bootstrap');
 
 describe('test/app/controller/login.test.js', () => {
   // 测试不传参登录
-  it('should POST /api/v1/login 422', async function() {
-    app.mockCsrf();// token模拟
-    const err = new Error('validation failed');
-    err.status = 422;
-    app.mockService('login', 'login', err);
+  it('测试不传参登录 should 422', async function() {
+    // app.mockCsrf();// 此处不需要token模拟
+    app.mockService('login', 'login', 'ok');// 模拟service返回的数据
     await app.httpRequest()
       .post('/api/v1/login')
       .send({
+        // userid: 'test',
+        // userpwd: '123456', // 不传参
       })
       .expect(422)
       .expect({
@@ -27,9 +27,8 @@ describe('test/app/controller/login.test.js', () => {
   });
 
   // 测试正确登录
-  it('should POST /api/v1/login 201', async function() {
-    app.mockCsrf();
-    app.mockService('login', 'login', '1');
+  it('测试正确登录 should 201', async function() {
+    app.mockService('login', 'login', '1');// 模拟service返回的数据
     await app.httpRequest()
       .post('/api/v1/login')
       .send({

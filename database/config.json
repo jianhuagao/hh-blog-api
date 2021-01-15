@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "reroot",
+    "password": "666gjjhhh",
+    "database": "blogdb",
+    "host": "121.4.115.182",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "reroot",
+    "password": "666gjjhhh",
+    "database": "blogdbtest",
+    "host": "121.4.115.182",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "reroot",
+    "password": "666gjjhhh",
+    "database": "blogdb",
+    "host": "121.4.115.182",
+    "dialect": "mysql"
+  }
+}

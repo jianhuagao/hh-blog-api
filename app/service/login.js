@@ -14,7 +14,7 @@ class LoginService extends Service {
         userpwd,
       },
     };
-    const userCount = await this.ctx.model.TbUser.findAll(query);
+    const userCount = await ctx.model.TbUser.findAll(query);
     const result = userCount[0] ? '1' : '0';
     return result;
   }

@@ -17,8 +17,12 @@ class RegisterController extends Controller {
     // 明文密码加密
     ctx.validate(this.createRule, ctx.request.body);
     ctx.request.body.userpwd = ctx.helper.encryptionPassword(userpwd);
-    ctx.body = await service.register.create(); // 查找 service/menu.js 下的 selectMenu 方法。
-    ctx.status = 201;
+    const ret = await service.register.create(); // 查找 service/menu.js 下的 selectMenu 方法。
+    if (ret) {
+      ctx.status = 201;
+    } else {
+      ctx.status = 400;
+    }
   }
 }
 

@@ -35,7 +35,6 @@ describe('test/app/controller/login.test.js', () => {
         userid: 'test',
         userpwd: '123456',
       })
-      .expect(200)
-      .expect('1');
+      .expect(200);
   });
 });

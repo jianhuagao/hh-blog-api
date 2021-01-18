@@ -18,7 +18,7 @@ describe('test/app/service/login.test.js', () => {
         userpwd: '123',
       };
       const ret = await ctx.service.login.login();
-      assert(ret === '0');
+      assert(ret === undefined);
     });
 
     it('测试密码正确时登录 should login success', async () => {
@@ -27,8 +27,8 @@ describe('test/app/service/login.test.js', () => {
         userid: 'gaojianhua',
         userpwd: '123456',
       };
-      const id = await ctx.service.login.login();
-      assert(id === '1');
+      const ret = await ctx.service.login.login();
+      assert(ret);
     });
   });
 });

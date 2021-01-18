@@ -9,6 +9,10 @@ module.exports = app => {
   const { router, controller } = app;
   router.resources('menu', '/api/v1/menu', controller.menu);
   router.resources('website', '/api/v1/website', controller.website);
+  router.resources('banner', '/api/v1/banner', controller.banner);
+  router.resources('area', '/api/v1/area', controller.area);
+  router.resources('blogType', '/api/v1/blogType', controller.blogType);
+  router.resources('blog', '/api/v1/blog', controller.blog);
   router.resources('user', '/api/v1/user', controller.user);
   router.resources('register', '/api/v1/register', controller.register);
   router.post('login', '/api/v1/login', controller.login.login);

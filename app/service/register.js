@@ -7,8 +7,18 @@ class RegisterService extends Service {
   async create() {
     const { ctx } = this;
     const { userid, userpwd, username } = ctx.request.body;
+    const checking = await ctx.model.TbUser.findAll({
+      where: {
+        userid,
+      },
+    });
+    if (checking[0]) {
+      console.log('已注册');
+      return '';
+    }
     const user = await ctx.model.TbUser.create({ userid, userpwd, username });
     return user;
+
   }
 }
 

@@ -16,7 +16,7 @@ class LoginController extends Controller {
 
     ctx.validate(this.loginRule, ctx.request.body);
     ctx.request.body.userpwd = ctx.helper.encryptionPassword(userpwd);
-    ctx.body = await service.login.login(); // 查找 service/menu.js 下的 selectMenu 方法。
+    ctx.user = await service.login.login(); // 查找 service/menu.js 下的 selectMenu 方法。
   }
 }
 

@@ -1,9 +1,12 @@
 /* eslint valid-jsdoc: "off" */
 'use strict';
-
+const path = require('path');
+const fs = require('fs');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
+const PRIVATE_KEY = fs.readFileSync(path.resolve(__dirname, '../app/keys/private.key'));
+const PUBLIC_KEY = fs.readFileSync(path.resolve(__dirname, '../app/keys/public.key'));
 module.exports = appInfo => {
   /**
    * built-in config
@@ -19,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = [ 'jwt', 'errorHandler' ];
+  config.middleware = [ 'auth', 'errorHandler', 'login' ];
   config.errorHandler = {
     match: '/api',
   };
@@ -48,8 +51,18 @@ module.exports = appInfo => {
   };
 
   config.jwt = {
-    publicSecret: 'publicSecret',
-    privateSecret: 'privateSecret',
+    publicSecret: PUBLIC_KEY,
+    privateSecret: PRIVATE_KEY,
+  };
+
+  config.login = {
+    match: '/api/v1/login',
+    privateSecret: PRIVATE_KEY,
+  };
+
+  config.auth = {
+    match: [ '/api/v1/user' ],
+    publicSecret: PUBLIC_KEY,
   };
 
   return {

@@ -30,9 +30,10 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-hh-blog-api",
+    "start": "egg-scripts start --port=7001 --daemon --title=egg-server-hh-blog-api",
     "stop": "egg-scripts stop --title=egg-server-hh-blog-api",
     "dev": "egg-bin dev",
+    "build":"npm install --production && tar -zcvf ../release.tgz .",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

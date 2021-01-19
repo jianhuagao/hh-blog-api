@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = [ 'auth', 'errorHandler', 'login' ];
+  config.middleware = [ 'auth', 'errorHandler', 'login', 'getReturn' ];
   config.errorHandler = {
     match: '/api',
   };
@@ -64,7 +64,11 @@ module.exports = appInfo => {
     match: [ '/api/v1/user' ],
     publicSecret: PUBLIC_KEY,
   };
-
+  config.getReturn = {
+    match: ctx => {
+      return ctx.method === 'GET';
+    },
+  };
   return {
     ...config,
     ...userConfig,

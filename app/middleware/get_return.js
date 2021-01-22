@@ -6,9 +6,10 @@ module.exports = () => {
     console.log('get返回值中间件~');
     const ret = ctx.ret;
     if (ret) {
-      ctx.body = {
-        data: ret,
-      };
+      // ctx.body = {
+      //   data: ret,
+      // };
+      ctx.body = ret;
     }
   };
 };

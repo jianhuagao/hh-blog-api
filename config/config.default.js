@@ -43,11 +43,22 @@ module.exports = appInfo => {
   };
 
   // 注册接口不验证csrf
+  // config.security = {
+  //   csrf: {
+  //     ignore: [ '/api/v1/register', '/api/v1/login' ],
+  //     enable: true,
+  //   },
+  // };
   config.security = {
     csrf: {
-      ignore: [ '/api/v1/register', '/api/v1/login' ],
-      enable: true,
+      enable: false,
+      ignoreJSON: true,
     },
+    domainWhiteList: [ '*' ], // []中放放出的白名单，*代表所有
+  };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
   config.jwt = {

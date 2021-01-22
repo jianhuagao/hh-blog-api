@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "egg": "^2.15.1",
+    "egg-cors": "^2.2.3",
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^6.0.0",
     "egg-validate": "^2.0.2",
@@ -33,7 +34,7 @@
     "start": "egg-scripts start --port=7001 --daemon --title=egg-server-hh-blog-api",
     "stop": "egg-scripts stop --title=egg-server-hh-blog-api",
     "dev": "egg-bin dev",
-    "build":"npm install --production && tar -zcvf ../release.tgz .",
+    "build": "npm install --production && tar -zcvf ../release.tgz .",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

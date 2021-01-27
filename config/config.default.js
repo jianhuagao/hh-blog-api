@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = [ 'auth', 'errorHandler', 'login', 'getReturn' ];
+  config.middleware = [ 'paging','auth', 'errorHandler', 'login', 'getReturn' ];
   config.errorHandler = {
     match: '/api',
   };
@@ -60,7 +60,11 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
-
+  config.paging={
+    match: ctx => {
+      return ctx.method === 'GET';
+    },
+  }
   config.jwt = {
     publicSecret: PUBLIC_KEY,
     privateSecret: PRIVATE_KEY,

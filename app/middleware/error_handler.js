@@ -18,6 +18,7 @@ module.exports = () => {
       if (status === 422) {
         ctx.body.detail = err.errors;
       }
+      console.log("错误中间件执行~",status)
       ctx.status = status;
     }
   };

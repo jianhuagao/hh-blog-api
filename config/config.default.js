@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = [ 'paging','auth', 'errorHandler', 'login', 'getReturn' ];
+  config.middleware = ['paging', 'auth', 'errorHandler', 'login', 'getReturn'];
   config.errorHandler = {
     match: '/api',
   };
@@ -54,13 +54,13 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ '*' ], // []中放放出的白名单，*代表所有
+    domainWhiteList: ['*'], // []中放放出的白名单，*代表所有
   };
   config.cors = {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
-  config.paging={
+  config.paging = {
     match: ctx => {
       return ctx.method === 'GET';
     },
@@ -76,9 +76,18 @@ module.exports = appInfo => {
   };
 
   config.auth = {
-    match: [ '/api/v1/user' ],
+    match: ctx => {
+      const method = 'PUT,POST,DELETE,'
+      if (ctx.url==="/api/v1/user") {
+        return true;
+      }else if(ctx.url==="/api/v1/register"||ctx.url==="/api/v1/login"){
+        return false;
+      }
+      return method.indexOf(ctx.method+",")!= -1;
+    },
     publicSecret: PUBLIC_KEY,
   };
+
   config.getReturn = {
     match: ctx => {
       return ctx.method === 'GET';

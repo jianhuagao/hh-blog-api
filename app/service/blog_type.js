@@ -8,6 +8,24 @@ class BlogTypeService extends Service {
     const result = await this.ctx.model.TbBlogType.findAndCountAll(this.ctx.paging);
     return result;
   }
+  async create() {
+    const { ctx } = this;
+    const data = ctx.request.body;
+    return await ctx.model.TbBlogType.create(data);
+  }
+  async update(id) {
+    const { ctx } = this;
+    const data = ctx.request.body;
+    return await ctx.model.TbBlogType.update(data,{
+      where:{id}
+    });
+  }
+  async destroy(id) {
+    const { ctx } = this;
+    return await ctx.model.TbBlogType.destroy({
+      "where":{id}
+    });
+  }
 }
 
 module.exports = BlogTypeService;

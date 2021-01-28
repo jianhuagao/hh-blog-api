@@ -9,7 +9,11 @@ exports.validate = {
   enable: true,
   package: 'egg-validate',
 };
-exports.cors = {
+// exports.cors = {
+//   enable: true,
+//   package: 'egg-cors',
+// };
+exports.multer = {
   enable: true,
-  package: 'egg-cors',
+  package: 'koa-multer',
 };

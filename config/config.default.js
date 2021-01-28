@@ -69,7 +69,9 @@ module.exports = appInfo => {
     publicSecret: PUBLIC_KEY,
     privateSecret: PRIVATE_KEY,
   };
-
+  config.projectNet = {
+    http:"https://api.gaojianhua.top/api/v1"
+  }
   config.login = {
     match: '/api/v1/login',
     privateSecret: PRIVATE_KEY,

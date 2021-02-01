@@ -11,5 +11,8 @@ module.exports = () => {
       // };
       ctx.body = ret;
     }
+    else{
+      ctx.status=400;
+    }
   };
 };

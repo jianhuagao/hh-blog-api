@@ -8,13 +8,17 @@ class BlogService extends Service {
     const typeWhere = type && {
       "type": Number(type)
     }
-    console.log(typeWhere)
     const result = await this.ctx.model.TbBlog.findAndCountAll({
       ...this.ctx.paging,
       where: {
         ...typeWhere
       }
     });
+    return result;
+  }
+
+  async show(id) {
+    const result = await this.ctx.model.TbBlog.findByPk(id);
     return result;
   }
 }

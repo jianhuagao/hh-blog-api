@@ -42,7 +42,6 @@ class BlogTypeController extends Controller {
     const ret = await service.blogType.destroy(id);
     if (ret) {
       ctx.status = 204;
-      ctx.body= "deleted";
     } else {
       ctx.status = 400;
     }

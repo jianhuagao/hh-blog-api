@@ -8,7 +8,7 @@ class BlogService extends Service {
     const typeWhere = type && {
       "type": Number(type)
     }
-    const attributes = type && {attributes: ['title', 'showimg', 'type', 'area', 'read', 'good', 'author', 'udate', 'sort', 'resume']}
+    const attributes = type && {attributes: ['id','title', 'showimg', 'type', 'area', 'read', 'good', 'author', 'udate', 'sort', 'resume']}
     const result = await this.ctx.model.TbBlog.findAndCountAll({
       ...this.ctx.paging,
       where: {

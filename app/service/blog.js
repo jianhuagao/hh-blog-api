@@ -12,7 +12,8 @@ class BlogService extends Service {
     const result = await this.ctx.model.TbBlog.findAndCountAll({
       ...this.ctx.paging,
       where: {
-        ...typeWhere
+        ...typeWhere,
+        ...this.ctx.findall
       },
       ...attributes
     });

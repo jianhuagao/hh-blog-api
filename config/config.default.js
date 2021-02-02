@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = ['paging', 'auth', 'errorHandler', 'login', 'getReturn'];
+  config.middleware = ['paging', 'auth', 'findall','errorHandler', 'login', 'getReturn'];
   config.errorHandler = {
     match: '/api',
   };
@@ -65,6 +65,11 @@ module.exports = appInfo => {
       return ctx.method === 'GET';
     },
   }
+  config.findall = {
+    match: ctx => {
+      return ctx.method === 'GET';
+    },
+  }
   config.jwt = {
     publicSecret: PUBLIC_KEY,
     privateSecret: PRIVATE_KEY,
@@ -78,15 +83,6 @@ module.exports = appInfo => {
   };
 
   config.auth = {
-    match: ctx => {
-      const method = 'PUT,POST,DELETE,'
-      if (ctx.url==="/api/v1/user") {
-        return true;
-      }else if(ctx.url==="/api/v1/register"||ctx.url==="/api/v1/login"){
-        return false;
-      }
-      return method.indexOf(ctx.method+",")!= -1;
-    },
     publicSecret: PUBLIC_KEY,
   };
 

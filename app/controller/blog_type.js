@@ -28,7 +28,7 @@ class BlogTypeController extends Controller {
   async update() {
     const { ctx, service } = this;
     const id = ctx.params.id;
-    ctx.validate(this.createRule);
+    // ctx.validate(this.createRule);
     const ret = await service.blogType.update(id);
     if (ret) {
       ctx.status = 202;

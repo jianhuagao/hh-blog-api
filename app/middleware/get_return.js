@@ -11,8 +11,8 @@ module.exports = () => {
       // };
       ctx.body = ret;
     }
-    else{
-      ctx.status=400;
-    }
+    // else{
+    //   ctx.status=400;
+    // }
   };
 };

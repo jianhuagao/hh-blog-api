@@ -76,6 +76,7 @@ module.exports = appInfo => {
   };
   config.projectNet = {
     http: 'https://api.gaojianhua.top/api/v1',
+    localPath: '../img',
   };
   config.login = {
     match: '/api/v1/login',

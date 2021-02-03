@@ -16,7 +16,7 @@ class ImgPoolService extends Service {
     });
     const retUrl = retFiles.map(item => {
       return {
-        url: httpUrl + '/' + item + '/image/png',
+        url: httpUrl + '/img/' + item + '/image/png',
         baseUrl: httpUrl,
         fileName: item,
       };

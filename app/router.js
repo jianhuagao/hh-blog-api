@@ -18,4 +18,5 @@ module.exports = app => {
   router.post('login', '/api/v1/login', controller.login.login);
   router.post('uploadImg', '/api/v1/uploadImg', controller.upload.uploadImg);
   router.get('img', '/api/v1/img/:id/:type/:end', controller.upload.getImg);
+  router.resources('imgPool', '/api/v1/imgPool', controller.imgPool);
 };

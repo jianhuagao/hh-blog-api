@@ -6,16 +6,16 @@ const Service = require('egg').Service;
 class BlogService extends Service {
   async index(type) {
     const typeWhere = type && {
-      "type": Number(type)
-    }
-    const attributes = type && {attributes: ['id','title', 'showimg', 'type', 'area', 'read', 'good', 'author', 'udate', 'sort', 'resume']}
+      type: Number(type),
+    };
+    const attributes = type && { attributes: [ 'id', 'title', 'showimg', 'type', 'area', 'read', 'good', 'author', 'udate', 'sort', 'resume' ] };
     const result = await this.ctx.model.TbBlog.findAndCountAll({
       ...this.ctx.paging,
       where: {
         ...typeWhere,
-        ...this.ctx.findall
+        ...this.ctx.findall,
       },
-      ...attributes
+      ...attributes,
     });
     return result;
   }
@@ -23,6 +23,26 @@ class BlogService extends Service {
   async show(id) {
     const result = await this.ctx.model.TbBlog.findByPk(id);
     return result;
+  }
+
+  async create() {
+    const { ctx } = this;
+    const data = ctx.request.body;
+    return await ctx.model.TbBlog.create(data);
+  }
+  async update(id) {
+    const { ctx } = this;
+    const data = ctx.request.body;
+    return await ctx.model.TbBlog.update(data, {
+      where: { id },
+    });
+  }
+  // 逻辑删除
+  async destroy(id) {
+    const { ctx } = this;
+    return await ctx.model.TbBlog.update({ del: 1 }, {
+      where: { id },
+    });
   }
 }
 

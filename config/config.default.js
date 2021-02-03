@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = ['paging', 'auth', 'findall','errorHandler', 'login', 'getReturn'];
+  config.middleware = [ 'paging', 'auth', 'findall', 'errorHandler', 'login', 'getReturn' ];
   config.errorHandler = {
     match: '/api',
   };
@@ -54,7 +54,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: ['*'], // []中放放出的白名单，*代表所有
+    domainWhiteList: [ '*' ], // []中放放出的白名单，*代表所有
   };
   config.cors = {
     origin: '*',
@@ -64,19 +64,19 @@ module.exports = appInfo => {
     match: ctx => {
       return ctx.method === 'GET';
     },
-  }
+  };
   config.findall = {
     match: ctx => {
       return ctx.method === 'GET';
     },
-  }
+  };
   config.jwt = {
     publicSecret: PUBLIC_KEY,
     privateSecret: PRIVATE_KEY,
   };
   config.projectNet = {
-    http:"https://api.gaojianhua.top/api/v1"
-  }
+    http: 'https://api.gaojianhua.top/api/v1',
+  };
   config.login = {
     match: '/api/v1/login',
     privateSecret: PRIVATE_KEY,

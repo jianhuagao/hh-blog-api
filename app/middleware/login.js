@@ -14,7 +14,7 @@ module.exports = options => {
       ctx.body = { userid, username, token };
       console.log('Token授权成功~');
     } else {
-      ctx.body = {"msg":"用户登录失败!Error: 校验失败或密码错误!",data:null} ;
+      ctx.body = { msg: '用户登录失败!Error: 校验失败或密码错误!', data: null };
       ctx.status = 401;
     }
   };

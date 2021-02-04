@@ -16,6 +16,7 @@ class BlogController extends Controller {
       author: 'string',
 
     };
+    this.webHttp = this.app.config.projectNet.webHttp;// api base接口
   }
   async index() {
     const { ctx, service } = this;
@@ -32,6 +33,8 @@ class BlogController extends Controller {
     ctx.validate(this.createRule, ctx.request.body);
     const ret = await service.blog.create(ctx.request.body);
     if (ret) {
+      //发布成功显示链接
+      ctx.body =this.webHttp+"#/Blog/"+ ret.dataValues.id;
       ctx.status = 201;
     } else {
       ctx.status = 400;

@@ -12,12 +12,12 @@ class ImgPoolService extends Service {
     const localPath = this.app.config.projectNet.localPath;// 本地存图路径
     page || (this.ctx.status = 400);// 如果不分页不允许查询
     const files = await fs.readdirSync(localPath);// 获取目录下的文件集合
-    const retFiles = files.filter((value, key) => { // 按分页进行筛选
-      return ((key >= page.offset) && (key < (page.offset + page.limit)));
-    });
-    const retUrl = retFiles.map(item => { // 分类筛选过后进行返回数据拼接
+    let fileCountSize = 0;// 文件总占用
+    // 文件详细信息
+    const filesState = files.map(item => {
       const fileSatae = fs.statSync(path.resolve(localPath, item));// 文件状态获取
       const size = Number((fileSatae.size / 1024).toFixed(2));// 文件大小(kb)
+      fileCountSize += size;
       return {
         url: httpUrl + '/img/' + item + '/image/png', // 这是返回的接口地址
         baseUrl: httpUrl, // baseurl
@@ -26,7 +26,11 @@ class ImgPoolService extends Service {
         time: fileSatae.birthtime, // 上传时间
       };
     });
-    const ret = { count: files.length, rows: retUrl };
+    filesState.sort((a, b) => b.time - a.time);// 按时间倒序
+    const retFiles = filesState.filter((value, key) => { // 按分页进行筛选
+      return ((key >= page.offset) && (key < (page.offset + page.limit)));
+    });
+    const ret = { count: files.length, fileCountSize, rows: retFiles };
     return ret;
   }
 

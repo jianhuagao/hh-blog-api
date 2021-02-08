@@ -13,3 +13,6 @@ run/
 typings/
 .nyc_output/
 .github/
+.travis.yml
+appveyor.yml
+.github/workflows/nodejs.yml

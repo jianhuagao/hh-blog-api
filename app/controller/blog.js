@@ -46,7 +46,9 @@ class BlogController extends Controller {
     // ctx.validate(this.createRule);
     const ret = await service.blog.update(id);
     if (ret) {
-      ctx.status = 202;
+      //发布成功显示链接
+      ctx.body =this.webHttp+"#/Blog/"+ id;
+      ctx.status = 201;
     } else {
       ctx.status = 400;
     }

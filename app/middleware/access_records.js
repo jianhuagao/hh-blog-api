@@ -11,6 +11,7 @@ module.exports = () => {
       resstatus: ctx.status,
       originalurl: ctx.originalUrl,
     };
+    console.log(body)
     await ctx.service.request.create(body);
   };
 };

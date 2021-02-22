@@ -30,7 +30,7 @@ class ImgPoolService extends Service {
     const retFiles = filesState.filter((value, key) => { // 按分页进行筛选
       return ((key >= page.offset) && (key < (page.offset + page.limit)));
     });
-    const ret = { count: files.length, countSize:Number(fileCountSize.toFixed(2)), rows: retFiles };
+    const ret = { count: files.length, countSize: Number(fileCountSize.toFixed(2)), rows: retFiles };
     return ret;
   }
 

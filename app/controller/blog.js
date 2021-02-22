@@ -33,8 +33,8 @@ class BlogController extends Controller {
     ctx.validate(this.createRule, ctx.request.body);
     const ret = await service.blog.create(ctx.request.body);
     if (ret) {
-      //发布成功显示链接
-      ctx.body =this.webHttp+"#/Blog/"+ ret.dataValues.id;
+      // 发布成功显示链接
+      ctx.body = this.webHttp + '#/Blog/' + ret.dataValues.id;
       ctx.status = 201;
     } else {
       ctx.status = 400;
@@ -46,8 +46,8 @@ class BlogController extends Controller {
     // ctx.validate(this.createRule);
     const ret = await service.blog.update(id);
     if (ret) {
-      //发布成功显示链接
-      ctx.body =this.webHttp+"#/Blog/"+ id;
+      // 发布成功显示链接
+      ctx.body = this.webHttp + '#/Blog/' + id;
       ctx.status = 201;
     } else {
       ctx.status = 400;

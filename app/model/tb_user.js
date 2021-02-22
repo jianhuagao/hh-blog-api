@@ -56,6 +56,21 @@ module.exports = function({ model: sequelize, Sequelize: DataTypes }) {
       defaultValue: 1,
       comment: '是否启用',
     },
+    avatar: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      comment: '用户头像',
+    },
+    introduction: {
+      type: DataTypes.STRING(500),
+      allowNull: true,
+      comment: '简介',
+    },
+    gender: {
+      type: DataTypes.STRING(10),
+      allowNull: true,
+      comment: '性别',
+    },
   }, {
     sequelize,
     tableName: 'tb_user',

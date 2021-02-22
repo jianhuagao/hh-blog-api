@@ -22,7 +22,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1610354339121_7437';
 
   // 注册全局中间件
-  config.middleware = [ 'paging', 'auth', 'findall', 'errorHandler', 'login', 'getReturn' ];
+  config.middleware = [ 'accessRecords', 'paging', 'auth', 'findall', 'errorHandler', 'login', 'getReturn' ];
   config.errorHandler = {
     match: '/api',
   };
@@ -41,7 +41,6 @@ module.exports = appInfo => {
       deletedAt: 'del',
     },
   };
-
   // 注册接口不验证csrf
   // config.security = {
   //   csrf: {
@@ -76,7 +75,7 @@ module.exports = appInfo => {
   };
   config.projectNet = {
     http: 'https://api.gaojianhua.top/api/v1',
-    webHttp:'https://www.gaojianhua.top/',
+    webHttp: 'https://www.gaojianhua.top/',
     localPath: '../img',
   };
   config.login = {
@@ -92,6 +91,9 @@ module.exports = appInfo => {
     match: ctx => {
       return ctx.method === 'GET';
     },
+  };
+  config.accessRecords = {
+    enable: true,
   };
   return {
     ...config,

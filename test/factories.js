@@ -12,6 +12,8 @@ module.exports = app => {
     username: '高建华',
     userid: 'gaojianhua',
     userpwd: '123456',
-
+    avatar: '123456',
+    introduction: '123456',
+    gender: '1',
   });
 };

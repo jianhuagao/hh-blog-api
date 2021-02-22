@@ -96,6 +96,11 @@ module.exports = function({ model: sequelize, Sequelize: DataTypes }) {
       defaultValue: 0,
       comment: '逻辑删除 0未删除 1已删除',
     },
+    user: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      comment: '所属用户',
+    },
   }, {
     sequelize,
     tableName: 'tb_blog',

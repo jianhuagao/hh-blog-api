@@ -82,7 +82,9 @@ module.exports = appInfo => {
     match: '/api/v1/login',
     privateSecret: PRIVATE_KEY,
   };
-
+  config.accessRecords = {
+    match: '/api/v1/website',
+  };
   config.auth = {
     publicSecret: PUBLIC_KEY,
   };
@@ -91,9 +93,6 @@ module.exports = appInfo => {
     match: ctx => {
       return ctx.method === 'GET';
     },
-  };
-  config.accessRecords = {
-    enable: true,
   };
   return {
     ...config,

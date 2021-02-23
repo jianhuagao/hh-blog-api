@@ -10,8 +10,8 @@ module.exports = () => {
       method: ctx.method,
       resstatus: ctx.status,
       originalurl: ctx.originalUrl,
+      remarks:JSON.stringify(ctx.request.headers) 
     };
-    console.log(body)
     await ctx.service.request.create(body);
   };
 };

@@ -95,6 +95,11 @@ module.exports = function ({ model: sequelize, Sequelize: DataTypes }) {
       allowNull: true,
       defaultValue: 1,
       comment: "是否启用"
+    },
+    remarks: {
+      type: DataTypes.STRING(1000),
+      allowNull: true,
+      comment: "head详细"
     }
   }, {
     sequelize,
